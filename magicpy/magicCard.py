@@ -16,7 +16,7 @@ class MagicCard:
         self.powerToughness = ()
         self.rarity = ""
         self.oracleText = ""
-        self.keywords = []  # would a set be better? "Haste haste" is possible
+        self.keywords = []
 
 
         self.tapped = False

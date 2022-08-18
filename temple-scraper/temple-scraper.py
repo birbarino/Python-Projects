@@ -123,7 +123,7 @@ from requests.structures import CaseInsensitiveDict
 url = "https://tos.churchofjesuschrist.org/api/templeSchedule/getSessionInfo"
 
 headers = CaseInsensitiveDict()
-headers["User-Agent"] = "Python"    # TODO: Make it something clever ;)
+headers["User-Agent"] = "TempleScraper" 
 headers["Accept"] = "application/json"
 headers["Accept-Language"] = "en-US,en;q=0.5"
 headers["Accept-Encoding"] = "gzip, deflate, br"    # Probably can be changed to just gzip
@@ -134,7 +134,7 @@ headers["DNT"] = "1"
 headers["Connection"] = "keep-alive"
 headers["Referer"] = "https://tos.churchofjesuschrist.org/?locale=en&noCache=1654485128595"
 
-# FIXME: Figure out a way to dynamically generate a cookie. Will require user to login.
+# TODO: Figure out a way to get a cookie with little user intervention.
 headers["Cookie"] = "AMCV_66C5485451E56AAE0A490D45%40AdobeOrg=1176715910%7CMCIDTS%7C19150%7CMCMID%7C52033211225016407328959528403025176614%7CMCOPTOUT-1654492328s%7CNONE%7CvVersion%7C5.4.0; PFpreferredHomepage=COJC; notice_behavior=implied|us; AMCVS_66C5485451E56AAE0A490D45%40AdobeOrg=1; mbox=session#10edf1af45c04174992deed79e384849#1654486988; at_check=true; amlbcookie-prod=01; ORIG_URL=/sso?realm=/church&service=OktaOIDC&goto=https://www.churchofjesuschrist.org/services/platform/v4/set-wam-cookie&authIndexType=service&authIndexValue=OktaOIDC; NTID=TNAdz1UTXoS1ICULlwIGNyYWmCaS94t7; OAUTH_LOGOUT_URL=; ChurchSSO=gmWiozcVJFc91cnNVONsCun_TGI.*AAJTSQACMDIAAlNLABxydTdyK3F6SjhIOCt1eG1TYVdtV2NEQzJFbFE9AAR0eXBlAANDVFMAAlMxAAIwMQ..*; verificationNotice=hide; BIGipServerpool_chl.cf.churchofjesuschrist.org_HTTP=4236785162.20480.0000; BIGipServerpool_temple.churchofjesuschrist.org_HTTPS=813396746.47873.0000; Church-auth-jwt-prod=eyJ0eXAiOiJKV1QiLCJraWQiOiIvQnA5UHlqa2QwWE9WT1RoZVlOb21URitHa3M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJldGhuc3lycyIsImF1ZGl0VHJhY2tpbmdJZCI6Ijg1MzBiOTRkLTc5ODItNDA4Ni05YjA3LWVlNzViZDc4YzYxZS0zMTYwMTA5ODQiLCJpc3MiOiJudWxsOi8vaWRlbnQtcHJvZC5jaHVyY2hvZmplc3VzY2hyaXN0Lm9yZzo0NDMvc3NvL29hdXRoMiIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwibm9uY2UiOiJPTmJGMnRpM0ZQNVY2R1ZiIiwiYXVkIjoibDE4MzgyIiwiYWNyIjoiMCIsImF6cCI6ImwxODM4MiIsImF1dGhfdGltZSI6MTY1NDQ4MjYyMCwiZm9yZ2Vyb2NrIjp7InNzb3Rva2VuIjoiZ21XaW96Y1ZKRmM5MWNuTlZPTnNDdW5fVEdJLipBQUpUU1FBQ01ESUFBbE5MQUJ4eWRUZHlLM0Y2U2poSU9DdDFlRzFUWVZkdFYyTkVRekpGYkZFOUFBUjBlWEJsQUFORFZGTUFBbE14QUFJd01RLi4qIiwic3VpZCI6IjU0MmY2MjJmLTAyNzItNDgyMy1hN2IyLTE4MjRlNWJhMzVhNS0zMTI1MTQ1OTEifSwicmVhbG0iOiIvY2h1cmNoIiwiZXhwIjoxNjU0NTI4MzI3LCJ0b2tlblR5cGUiOiJKV1RUb2tlbiIsImlhdCI6MTY1NDQ4NTEyNywiYWdlbnRfcmVhbG0iOiIvY2h1cmNoIn0.SYfsWcQENAG99ANmWoSP2i0wB9qlF8VIKnhizivCZqIc1YFexbtg1joZ-YV3nSXiPpUqUfuNKfjoFJ2wK1kjOZcizKQ9d_-gSLhKAlC65-Bsh7Hx9IQFMTQpncVNXJsZ96wknGXky4DwZ7YCCfzf0cfei75Z5DLXmAam7l0pb1_qEI4iPh45WlF8OT7HXFpf8aSrraNastZGIQYsbXq8OrMhwIVFdHufgQttAcV3qMCxHWEmg-0btjTgBUjD8TEzGvnZAJ0q1MOfKDtlRaTaT1xzDFmsaj26daJYyE1sPLZ6qtgRQaNPSvAPS55HU7QlVkwLgVkIuQGjmbN27WOIrw; JSESSIONID=9F3670CBE0381886CBED5C20F4CCDE21; __VCAP_ID__=1702ddb0-a4ae-4ef7-4cc5-46b0; XSRF-TOKEN=f3235b7f-9897-4719-8fc1-f24f079d9584; tisLocale=en; ADRUM_BTa=R:68|g:dec4b402-42bc-4896-8f86-cd5834d8e5ea|n:churchofjesuschrist-prod_6b18a1f3-d5bd-4201-be20-78fa6c4d8152; SameSite=None; ADRUM_BT1=R:68|i:1375344|e:144"
 
 headers["Sec-Fetch-Dest"] = "empty"
@@ -142,6 +142,7 @@ headers["Sec-Fetch-Mode"] = "cors"
 headers["Sec-Fetch-Site"] = "same-origin"
 headers["TE"] = "trailers"
 
+# Data to pass into request, specifies appointment type and location
 data = '{"sessionYear":2022,"sessionMonth":5,"sessionDay":11,"appointmentType":"PROXY_BAPTISM","templeOrgId":48}'
 
 # Use POST method to make a request and store the response.
