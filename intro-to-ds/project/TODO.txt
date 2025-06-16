@@ -1,0 +1,23 @@
+TODO for project
+- split month > month; year
+- month -> int16
+- state -> Category? 
+- year -> int16
+- float64/int64 -> int32
+- There might be a need to split out some of the columns like rental_handgun, rental_long_gun, etc
+  - This was probably nice for readability, but for the sake of simplifying analysis, it might be needed
+  - this should reduce the high number of null values
+  - ex
+  | firearm | transaction_type |  |
+  |---------|------------------|--|
+  | category| category         |
+  - this does not account for totals, so I can probably just drop that column
+- This also means that there will be 
+
+
+
+
+
+  - Convert state into a `category`, as there are currently only 55 distinct values. __(this might actually not be helpful)__
+  
+  - Split the current `month` string (`yyyy-MM`) into 2 separate columns of integers, one for `year` and the other for `month`.
