@@ -1,12 +1,12 @@
-TODO:
-- 'flowing cohesive report'
-- ensure all steps taken in cleaning are explained
+### Question(s) for Analysis
 
-Do states with higher populations (per the 2010 Census) have a proportionally larger amount of NICS look-ups? For example, if Arizona is about ~3x more populated than Arkansas, will there be ~3x more background checks?
+Once we have our data organized and usable, I'll work through the following questions:
 
-This question also follows the same lines as determining the estimated "gun purchases" per capita, or at least NICS background checks. What does that look like when broken out to the different firearm types (`handgun`, `other`, `long gun`). Is the disparity between the three types generally the same across all of the states? I would assume a state like Rhode Island has a significantly smaller `long gun` background check percentage that somewhere like Wyoming, where hunting is much more prominent.
+1. Does median household income have a positive, negative, or no correlation with NICS background checks?
 
-What is the general trend of NICS usage in respect to the percentage of popluation change? How closely does line follow the estimated population change when plotted on a line graph?
-- Could do one for all 50 states, then 1 for each state.
-  - Is it possible to overlay 50 lines? lol
-- This might need to be like 50 unique graphs/line matrix from 2010-2016
+2.  What does that look like when the NICS data is broken out to the different firearm types (`handgun`, `other`, `long gun`). Is the disparity between the three types generally the same across all of the states? I would assume a state like Rhode Island has a significantly smaller `long gun` background check percentage that somewhere like Wyoming, where recreational hunting is much more prominent.
+    - Do any other factors potentially have an influence?
+      - Lower population per square mile
+      - Larger land area
+      - Number of veterans
+
