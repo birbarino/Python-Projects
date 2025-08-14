@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    secrets:
+      - postgres
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgres
+      - POSTGRES_USER=postgres
+  cassandra:
+    image: cassandra
+    container_name: cassandra
+    ports:
+      - "9160:9160"
+      - "9042:9042"
+      - "7000:7000"
+      - "7001:7001"
+      - "7199:7199"
+
+secrets:
+  postgres:
+    file: .secrets/postgres-secret.txt
