@@ -61,6 +61,7 @@ time_table_create = ("""
         start_time timestamp,
         hour int,
         day int,
+        week int,
         month int,
         year int,
         weekday int,
@@ -94,7 +95,7 @@ artist_table_insert = ("""
 
 time_table_insert = ("""
     INSERT INTO time 
-    VALUES (%s, %s, %s, %s, %s, %s);
+    VALUES (%s, %d, %d, %d, %d, %d, %d);
 """)
 
 # FIND SONGS
