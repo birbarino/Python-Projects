@@ -10,7 +10,7 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 
 songplay_table_create = ("""
     CREATE TABLE IF NOT EXISTS songplays (
-        songplay_id int,
+        songplay_id SERIAL,
         start_time timestamp,
         user_id int,
         level text,
@@ -72,36 +72,45 @@ time_table_create = ("""
 # INSERT RECORDS
 
 songplay_table_insert = ("""
-    INSERT INTO songplay 
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+    INSERT INTO songplays (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
 """)
 
 user_table_insert = ("""
     INSERT INTO users 
-    VALUES (%s, %s, %s, %s, %s);
+    VALUES (%s, %s, %s, %s, %s)
+    ON CONFLICT (user_id) DO NOTHING;;
 """)
 
 song_table_insert = ("""
     INSERT INTO songs (song_id, title, artist_id, duration) 
-    VALUES (%s, %s, %s, %s);
+    VALUES (%s, %s, %s, %s)
+    ON CONFLICT (song_id) DO NOTHING;
 """)
 
 artist_table_insert = ("""
     INSERT INTO artists (artist_id, name, location, latitude, longitude) 
-    VALUES (%s, %s, %s, %s, %s);
+    VALUES (%s, %s, %s, %s, %s)
+    ON CONFLICT (artist_id) DO NOTHING;
                        
 """)
 
 
 time_table_insert = ("""
     INSERT INTO time 
-    VALUES (%s, %d, %d, %d, %d, %d, %d);
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (start_time) DO NOTHING;
 """)
 
 # FIND SONGS
-
+#    (row.song, row.artist, row.duration)
 song_select = ("""
-    
+    SELECT songs.song_id, artists.artist_id
+    FROM songs
+    INNER JOIN artists ON songs.artist_id = artists.artist_id
+    WHERE songs.title = %s
+        AND artists.name = %s
+        AND songs.duration = %s;
 """)
 
 # QUERY LISTS
