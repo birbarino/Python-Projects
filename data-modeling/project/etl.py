@@ -5,8 +5,20 @@ import psycopg2
 import pandas as pd
 from sql_queries import *
 
-
 def process_song_file(cur, filepath):
+    """
+    Description: Given a filepath and a cursor object, this
+    function will insert data into the artists and songs tables
+    in the database.
+
+    Arguments:
+        cur: the cursor object.
+        filepath: log data or song data file path.
+
+    Returns:
+        None
+    """   
+
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -20,6 +32,20 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    Description: Given a filepath and a cursor, this function inserts
+    resulting data into time, users, and songplays tables in the sparkify
+    database. It also constructs the broken-out columns for the time table,
+    i.e. day, week, month, etc.
+
+    Arguments:
+        cur: the cursor object.
+        filepath: log data or song data file path.
+
+    Returns:
+        None
+    """
+
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -80,6 +106,22 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    Description: Given access to a database, this function will 
+    iterate over all files in the given filepath and execute the 
+    provided function on them. Pending changes to the database are
+    then committed.
+
+    Arguments:
+        cur: the cursor object.
+        conn: connection to the PSQL database.
+        filepath: log data or song data file path.
+        func: function to transform the provided data with.
+
+    Returns:
+        None
+    """
+   
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -99,6 +141,18 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Description: This function performs the primary goals of this script and
+    makes use of the other functions within. The result is a PSQL database
+    containing the tables needed by Sparkify's analysts.
+
+    Arguments:
+        None
+
+    Returns:
+        None
+    """
+
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
