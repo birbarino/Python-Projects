@@ -1,1 +1,1 @@
-jupyter notebook --no-browser >> ~/.jupytersrv.log 2>&1 &
+jupyter notebook --port=8888 --NotebookApp.token=$JUPYTER_TOKEN --no-browser >> ~/.jupytersrv.log 2>&1 &
